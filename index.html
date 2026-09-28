@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Registration and Result Portal">
+    <title>Student Registration & Result Portal</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark portal-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
+                <span class="brand-mark"><i class="bi bi-mortarboard-fill"></i></span>
+                <span>
+                    <span class="d-block brand-title">Student Portal</span>
+                    <small class="brand-subtitle">Registration & Results</small>
+                </span>
+            </a>
+
+            <span class="badge rounded-pill portal-badge d-none d-sm-inline-flex">
+                <i class="bi bi-shield-check me-1"></i> Academic Portal
+            </span>
+        </div>
+    </nav>
+
+    <main class="container py-4 py-lg-5">
+
+        <!-- Hero -->
+        <section class="hero-section mb-4 mb-lg-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="section-kicker">STUDENT SERVICES</span>
+                    <h1 class="display-5 fw-bold mb-3">Student Registration & Result Portal</h1>
+                    <p class="lead text-secondary mb-0">
+                        Register your details, select your course, enter examination marks,
+                        and generate your result instantly.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-icon"><i class="bi bi-calculator"></i></div>
+                        <div>
+                            <strong>Automatic Result</strong>
+                            <span>Total, percentage & pass/fail status</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Card -->
+        <section class="card portal-card border-0 shadow-sm mb-5">
+            <div class="card-header portal-card-header border-0 p-4 p-lg-5">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-number">01</div>
+                    <div>
+                        <h2 class="h4 fw-bold mb-1">Student Registration</h2>
+                        <p class="text-secondary mb-0">Enter your personal, academic and examination details.</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="studentForm" class="needs-validation" novalidate>
+
+                <!-- Personal Details -->
+                <div class="p-4 p-lg-5 border-top">
+                    <div class="section-title mb-4">
+                        <span class="title-icon"><i class="bi bi-person"></i></span>
+                        <div>
+                            <h3 class="h5 fw-bold mb-1">Personal Details</h3>
+                            <p class="small text-secondary mb-0">Provide your basic student information.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">Full Name <span class="required">*</span></label>
+                            <input type="text" class="form-control form-control-lg" id="fullName" name="fullName"
+                                   placeholder="Enter your full name"
+                                   pattern="[A-Za-z][A-Za-z .'-]{1,59}" minlength="2" maxlength="60" required>
+                            <div class="invalid-feedback">Please enter a valid name.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="rollNumber" class="form-label">Roll Number <span class="required">*</span></label>
+                            <input type="text" class="form-control form-control-lg" id="rollNumber" name="rollNumber"
+                                   placeholder="e.g. 23AIDS101"
+                                   pattern="[A-Za-z0-9/-]{3,20}" minlength="3" maxlength="20" required>
+                            <div class="invalid-feedback">Enter 3–20 letters, numbers, hyphens or slashes.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" class="form-control form-control-lg" id="email" name="email"
+                                   placeholder="student@example.com" maxlength="100" required>
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">Phone Number <span class="required">*</span></label>
+                            <input type="tel" class="form-control form-control-lg" id="phone" name="phone"
+                                   placeholder="10-digit mobile number" pattern="[6-9][0-9]{9}" required>
+                            <div class="invalid-feedback">Enter a valid 10-digit mobile number.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="dob" class="form-label">Date of Birth <span class="required">*</span></label>
+                            <input type="date" class="form-control form-control-lg" id="dob" name="dob" required>
+                            <div class="invalid-feedback">Please select your date of birth.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label">Gender <span class="required">*</span></label>
+                            <select class="form-select form-select-lg" id="gender" name="gender" required>
+                                <option value="" selected disabled>Select gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                            <div class="invalid-feedback">Please select your gender.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Details -->
+                <div class="p-4 p-lg-5 border-top">
+                    <div class="section-title mb-4">
+                        <span class="title-icon"><i class="bi bi-book"></i></span>
+                        <div>
+                            <h3 class="h5 fw-bold mb-1">Academic Details</h3>
+                            <p class="small text-secondary mb-0">Choose your course and current year of study.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="course" class="form-label">Select Course <span class="required">*</span></label>
+                            <select class="form-select form-select-lg" id="course" name="course" required>
+                                <option value="" selected disabled>Choose your course</option>
+                                <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
+                                <option value="Computer Science Engineering">Computer Science Engineering</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="invalid-feedback">Please select a course.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="year" class="form-label">Year of Study <span class="required">*</span></label>
+                            <select class="form-select form-select-lg" id="year" name="year" required>
+                                <option value="" selected disabled>Select year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                            <div class="invalid-feedback">Please select your year of study.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Examination Marks -->
+                <div class="p-4 p-lg-5 border-top">
+                    <div class="section-title mb-2">
+                        <span class="title-icon"><i class="bi bi-journal-check"></i></span>
+                        <div>
+                            <h3 class="h5 fw-bold mb-1">Examination Marks</h3>
+                            <p class="small text-secondary mb-0">Enter marks obtained out of 100 for five subjects.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-primary d-flex align-items-start gap-2 mt-4 mb-4" role="alert">
+                        <i class="bi bi-info-circle-fill mt-1"></i>
+                        <div><strong>Passing mark: 35/100.</strong> The overall result is PASS only when all five subjects are passed.</div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="subject-card">
+                                <div class="subject-number">01</div>
+                                <div class="flex-grow-1">
+                                    <label for="subject1" class="form-label">Subject Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="subject1" placeholder="e.g. Mathematics" maxlength="60" required>
+                                    <div class="invalid-feedback">Enter the subject name.</div>
+                                    <label for="mark1" class="form-label mt-3">Marks Obtained <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="mark1" placeholder="0 – 100" min="0" max="100" step="1" required>
+                                    <div class="invalid-feedback">Enter a whole number from 0 to 100.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="subject-card">
+                                <div class="subject-number">02</div>
+                                <div class="flex-grow-1">
+                                    <label for="subject2" class="form-label">Subject Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="subject2" placeholder="e.g. Python Programming" maxlength="60" required>
+                                    <div class="invalid-feedback">Enter the subject name.</div>
+                                    <label for="mark2" class="form-label mt-3">Marks Obtained <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="mark2" placeholder="0 – 100" min="0" max="100" step="1" required>
+                                    <div class="invalid-feedback">Enter a whole number from 0 to 100.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="subject-card">
+                                <div class="subject-number">03</div>
+                                <div class="flex-grow-1">
+                                    <label for="subject3" class="form-label">Subject Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="subject3" placeholder="e.g. Database Management" maxlength="60" required>
+                                    <div class="invalid-feedback">Enter the subject name.</div>
+                                    <label for="mark3" class="form-label mt-3">Marks Obtained <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="mark3" placeholder="0 – 100" min="0" max="100" step="1" required>
+                                    <div class="invalid-feedback">Enter a whole number from 0 to 100.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="subject-card">
+                                <div class="subject-number">04</div>
+                                <div class="flex-grow-1">
+                                    <label for="subject4" class="form-label">Subject Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="subject4" placeholder="e.g. Computer Networks" maxlength="60" required>
+                                    <div class="invalid-feedback">Enter the subject name.</div>
+                                    <label for="mark4" class="form-label mt-3">Marks Obtained <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="mark4" placeholder="0 – 100" min="0" max="100" step="1" required>
+                                    <div class="invalid-feedback">Enter a whole number from 0 to 100.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="subject-card">
+                                <div class="subject-number">05</div>
+                                <div class="flex-grow-1">
+                                    <label for="subject5" class="form-label">Subject Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" id="subject5" placeholder="e.g. Machine Learning" maxlength="60" required>
+                                    <div class="invalid-feedback">Enter the subject name.</div>
+                                    <label for="mark5" class="form-label mt-3">Marks Obtained <span class="required">*</span></label>
+                                    <input type="number" class="form-control" id="mark5" placeholder="0 – 100" min="0" max="100" step="1" required>
+                                    <div class="invalid-feedback">Enter a whole number from 0 to 100.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="card-footer bg-white border-top p-4 p-lg-5 d-flex flex-column flex-sm-row justify-content-end gap-2">
+                    <button type="reset" class="btn btn-light btn-lg px-4">
+                        <i class="bi bi-arrow-counterclockwise me-1"></i> Clear Form
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-check2-circle me-1"></i> Generate Result
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Result Section -->
+        <section id="resultSection" class="card result-card border-0 shadow-sm mb-5" aria-labelledby="resultTitle" aria-live="polite" hidden>
+            <div class="result-header p-4 p-lg-5">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-3">
+                    <div>
+                        <span class="section-kicker">ACADEMIC SUMMARY</span>
+                        <h2 id="resultTitle" class="display-6 fw-bold mb-2">Student Result Card</h2>
+                        <p class="text-secondary mb-0">Registration and examination summary generated from the submitted form.</p>
+                    </div>
+                    <span class="badge rounded-pill result-generated">
+                        <i class="bi bi-check-circle-fill me-1"></i> Result Generated
+                    </span>
+                </div>
+            </div>
+
+            <div class="p-4 p-lg-5 border-top">
+                <div class="student-summary d-flex align-items-center gap-3 mb-4">
+                    <div class="student-avatar" id="studentAvatar">S</div>
+                    <div>
+                        <h3 id="resultName" class="h4 fw-bold mb-1"></h3>
+                        <p id="resultRoll" class="text-secondary mb-0"></p>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-5">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="detail-item"><span>Email Address</span><strong id="resultEmail"></strong></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="detail-item"><span>Phone Number</span><strong id="resultPhone"></strong></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="detail-item"><span>Date of Birth</span><strong id="resultDob"></strong></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="detail-item"><span>Gender</span><strong id="resultGender"></strong></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="detail-item"><span>Course</span><strong id="resultCourse"></strong></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="detail-item"><span>Year of Study</span><strong id="resultYear"></strong></div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+                    <h3 class="h5 fw-bold mb-0">Examination Results</h3>
+                    <span class="small text-secondary">Maximum: 100 marks per subject</span>
+                </div>
+
+                <div class="table-responsive rounded-3 border">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Maximum Marks</th>
+                                <th scope="col">Marks Obtained</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="row g-3 mt-4">
+                    <div class="col-md-4">
+                        <div class="summary-card h-100">
+                            <span>Total Marks</span>
+                            <strong id="totalMarks">0 / 500</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="summary-card h-100">
+                            <span>Percentage</span>
+                            <strong id="percentage">0%</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="summary-card h-100">
+                            <span>Subjects Passed</span>
+                            <strong id="subjectsPassed">0 / 5</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="finalStatus" class="final-status mt-4 d-flex align-items-center justify-content-between gap-3">
+                    <div>
+                        <span class="status-caption">Overall Result</span>
+                        <h3 id="statusText" class="fw-bold mb-1"></h3>
+                        <p id="statusDescription" class="mb-0"></p>
+                    </div>
+                    <span class="status-icon" id="statusIcon"></span>
+                </div>
+            </div>
+
+            <div class="card-footer bg-white border-top p-4 p-lg-5 d-flex flex-column flex-sm-row justify-content-end gap-2 result-actions">
+                <button type="button" id="editButton" class="btn btn-light btn-lg px-4">
+                    <i class="bi bi-pencil-square me-1"></i> Edit Details
+                </button>
+                <button type="button" id="printButton" class="btn btn-primary btn-lg px-4">
+                    <i class="bi bi-printer me-1"></i> Print Result
+                </button>
+            </div>
+        </section>
+
+        <footer class="text-center text-secondary small py-3">
+            <p class="mb-1 fw-semibold">Student Registration & Result Portal</p>
+            <p class="mb-0">Mini Project · HTML5 · Bootstrap · JavaScript · CSS3</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
